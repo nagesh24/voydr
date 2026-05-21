@@ -1,0 +1,113 @@
+VOYDR V1 DEVELOPMENT TRACKER Generated on: 2026-02-20 10:27:32
+
+============================================================ PROJECT VISION ============================================================
+
+Voydr = Lightweight Digital Performance Coach Not a blocker. Not
+parental control. Not punishment.
+
+Core Principles: - Awareness > Restriction - Coaching > Policing -
+Progress > Punishment - Retention > Installs
+
+Target Users: - 18–30 year olds - CS Students - Developers - Startup
+aspirants - Productivity-focused individuals
+
+Platform: Chrome Extension (Manifest V3) Architecture: Extension-Only
+(No backend, No database, No auth)
+
+============================================================ PHASE 0 —ENVIRONMENT SETUP============================================================
+
+[ ] Create extension folder structure [ ] Create manifest.json [ ]
+Create background.js [ ] Create popup.html / popup.js / popup.css [ ]
+Add icons folder [ ] Load unpacked extension in Chrome [ ] Confirm no
+console errors
+
+============================================================ PHASE 1 — CORE TRACKING ENGINE ===========================================================
+
+[ ] Define state variables - activeHostname - lastTimestamp -
+isWindowFocused
+
+[ ] Add event listeners - tabs.onActivated - tabs.onUpdated -
+windows.onFocusChanged - runtime.onSuspend
+
+[ ] Implement delta-based tracking logic [ ] Cap delta > 300 seconds [ ]
+Ignore internal chrome:// pages [ ] Track only when window focused [ ]
+Console test all edge cases
+
+Test Cases: [ ] Rapid tab switching [ ] Minimize browser [ ] System
+sleep [ ] Multiple windows [ ] Extension reload
+
+============================================================ PHASE 2 — LOCAL STORAGE INTEGRATION ==========================================================
+
+Data Structure: screenTime: { “YYYY-MM-DD”: { “hostname”: seconds } }
+
+[ ] Implement getTodayDate() [ ] Write delta to chrome.storage.local [ ]
+Ensure seconds is canonical unit [ ] Verify persistence after browser
+restart
+
+============================================================ PHASE 3 — REMINDER SYSTEM (SOFT COACH) ======================================================
+
+Reminder Rules: - Threshold: 120 seconds (testing) - Once per site per
+day - No tab closing - Soft notification only
+
+Data Structure: remindersSent: { “YYYY-MM-DD”: { “hostname”: true } }
+
+[ ] Implement reminder logic [ ] Prevent reminder spam [ ] Verify reset
+next day
+
+============================================================ PHASE 4 — POPUP UI (MINIMAL)============================================================
+
+Popup Displays: [ ] Total active time today [ ] Top 3 sites [ ] Focus
+score (if available)
+
+[ ] Aggregate today’s data [ ] Sort sites by time [ ] Format seconds to
+readable time [ ] Ensure no performance lag
+
+============================================================ PHASE 5 —SITE CATEGORIZATION============================================================
+
+siteCategory: { “github.com”: “productive”, “youtube.com”: “distracting”
+}
+
+[ ] Add category selector UI [ ] Store category per hostname [ ]
+Implement Focus Score formula
+
+Focus Score Formula: Productive Time / Total Active Time
+
+[ ] Handle edge case (total time = 0)
+
+============================================================ PHASE 6 — STABILITY & EDGE CASE HARDENING ==================================================
+
+[ ] Rapid switching validation [ ] Multiple window validation [ ] Sleep
+recovery validation [ ] Midnight rollover validation [ ] Storage
+integrity validation [ ] Reminder once-per-day validation
+
+============================================================ PHASE 7 — POLISH ============================================================
+
+[ ] Remove debug logs [ ] Add minimal styling [ ] Add motivational
+micro-copy [ ] Optional badge indicator
+
+============================================================ PHASE 8 — RELEASE PREPARATION ============================================================
+
+[ ] Bump version in manifest [ ] Add required icons (16, 48, 128) [ ]
+Prepare Chrome Web Store listing [ ] Capture screenshots [ ] Zip
+extension [ ] Submit for review
+
+============================================================ VALIDATION METRICS ============================================================
+
+Primary Metric: Retention
+
+We Want: [ ] Users opening popup daily [ ] Users categorizing sites [ ]
+Users caring about focus score [ ] Users keeping extension installed > 7
+days
+
+If retention weak → pivot early.
+
+============================================================ V1 SUCCESS DEFINITION ============================================================
+
+Voydr V1 must:
+
+[ ] Track active browsing time accurately [ ] Pause when window
+unfocused [ ] Send soft reminder once per site per day [ ] Show daily
+summary [ ] Calculate focus score [ ] Store all data locally [ ] Work
+offline [ ] Be installable via Chrome Web Store
+
+============================================================ END OF DOCUMENT ============================================================

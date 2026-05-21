@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Voydr Coach</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="container">
+      
+      <!-- Brand Header -->
+      <header class="header">
+        <div class="brand">
+          <div class="logo">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linejoin="round">
+              <path d="M12 2L2 22H22L12 2Z" fill="rgba(255,255,255,0.1)"/>
+            </svg>
+          </div>
+          <h1>Voydr</h1>
+        </div>
+        
+        <button id="open-dashboard-btn" class="btn-dash" title="Open Cinematic Dashboard">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+          </svg>
+          Dashboard
+        </button>
+      </header>
+
+      <!-- App Main Grid -->
+      <div id="app"></div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>
