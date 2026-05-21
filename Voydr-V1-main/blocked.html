@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stay Intentional — Voydr</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+    :root {
+      --bg-primary: #050508;
+      --bg-secondary: #0c0c12;
+      --glass-bg: rgba(18, 18, 26, 0.6);
+      --glass-border: rgba(255, 255, 255, 0.05);
+      
+      --burnt-coral: #d97b66;
+      --burnt-coral-glow: rgba(217, 123, 102, 0.15);
+      
+      --text-primary: #f5f5f7;
+      --text-secondary: #8e8e93;
+      --font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-family);
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* --- BACKGROUND CINEMATIC FLOW --- */
+    .bg-gradient {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -2;
+      background: radial-gradient(circle at 50% 50%, #0a0815 0%, var(--bg-primary) 100%);
+    }
+
+    .glow-blob {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: var(--burnt-coral);
+      filter: blur(150px);
+      opacity: 0.08;
+      top: calc(50% - 250px);
+      left: calc(50% - 250px);
+      animation: slow-pulse 10s infinite alternate ease-in-out;
+    }
+
+    @keyframes slow-pulse {
+      0% { transform: scale(0.9) translate(-10px, -10px); opacity: 0.06; }
+      100% { transform: scale(1.1) translate(10px, 10px); opacity: 0.1; }
+    }
+
+    /* --- GLASS CONTAINER --- */
+    .container {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      padding: 48px;
+      border-radius: 28px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+      max-width: 460px;
+      width: 90%;
+      z-index: 10;
+      animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* --- BREATHING MEDITATION CIRCLE --- */
+    .breather-wrapper {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .breathing-circle {
+      position: absolute;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: rgba(217, 123, 102, 0.07);
+      border: 1px solid rgba(217, 123, 102, 0.25);
+      box-shadow: 0 0 20px var(--burnt-coral-glow);
+      animation: inhale-exhale 8s infinite ease-in-out;
+    }
+
+    .breather-icon {
+      font-size: 2.2rem;
+      z-index: 2;
+      animation: rotate-slow 20s infinite linear;
+    }
+
+    @keyframes inhale-exhale {
+      0%, 100% {
+        transform: scale(0.9);
+        background: rgba(217, 123, 102, 0.05);
+        box-shadow: 0 0 10px var(--burnt-coral-glow);
+      }
+      50% {
+        transform: scale(1.22);
+        background: rgba(217, 123, 102, 0.18);
+        box-shadow: 0 0 35px rgba(217, 123, 102, 0.4);
+      }
+    }
+
+    @keyframes rotate-slow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* --- TYPOGRAPHY --- */
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+
+    .calm-status {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--burnt-coral);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 24px;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .hostname {
+      font-weight: 600;
+      color: var(--burnt-coral);
+      background: rgba(217, 123, 102, 0.1);
+      border: 1px solid rgba(217, 123, 102, 0.18);
+      padding: 6px 14px;
+      border-radius: 100px;
+      display: inline-block;
+      margin: 2px 0 12px;
+      word-break: break-all;
+      font-size: 0.88rem;
+    }
+
+    /* --- BUTTONS --- */
+    .btn-close {
+      width: 100%;
+      padding: 14px;
+      background: #ffffff;
+      color: #000000;
+      font-family: var(--font-family);
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 16px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-close:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 255, 255, 0.25);
+    }
+
+    .footer-brand {
+      margin-top: 36px;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.2);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* --- ANIMATION IN --- */
+    @keyframes fade-in-up {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Layer -->
+  <div class="bg-gradient"></div>
+  <div class="glow-blob"></div>
+
+  <!-- Calming Panel Container -->
+  <div class="container">
+    
+    <!-- Breath Guide Circle -->
+    <div class="breather-wrapper">
+      <div class="breathing-circle"></div>
+      <div class="breather-icon">🧘</div>
+    </div>
+
+    <div class="calm-status">Focus Shield Active</div>
+    <h1>Take a breath.</h1>
+    
+    <p>
+      You chose to block access to<br />
+      <span class="hostname" id="blocked-site">distracting-site.com</span><br />
+      to honor your goals and digital intentionality today.
+    </p>
+
+    <!-- Close Tab Button -->
+    <button class="btn-close" id="close-tab-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+      Acknowledge & Close Tab
+    </button>
+
+    <div class="footer-brand">Voydr Performance Coach</div>
+  </div>
+
+  <script>
+    // 1. Fetch domain from query string parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const site = urlParams.get('site');
+    if (site) {
+      document.getElementById('blocked-site').textContent = site;
+    }
+
+    // 2. Wire Close Tab CTA to close current browser tab
+    document.getElementById('close-tab-btn').addEventListener('click', () => {
+      window.close();
+      
+      // Fallback if window.close() is blocked by browser security
+      alert("Tab closure requested.\nTo refocus fully, please close this browser tab manually and keep going!");
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voydr — Your Digital Performance Coach</title>
+  <link rel="stylesheet" href="Voydr-V1-main/dashboard.css" />
+  <!-- GSAP and Lottie for Cinematic Hero -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+  <!-- --- CINEMATIC BACKGROUND GLOWS --- -->
+  <div class="background-glow">
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+  </div>
+
+  <!-- --- PREMIUM NAVIGATION HEADER --- -->
+  <header class="nav-header" id="main-header">
+    <div class="brand-container">
+      <div class="brand-icon-wrapper" style="background: #4a5af0; border-radius: 8px; box-shadow: none;">
+        <span style="color: white; font-weight: bold; font-size: 1.1rem;">V</span>
+      </div>
+      <span class="brand-logo-text" style="color: #fff;">Voydr</span>
+    </div>
+    
+    <nav class="nav-pill-menu" style="position: absolute; left: 50%; transform: translateX(-50%);">
+      <a href="#" class="pill-link active">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+        Home
+      </a>
+      <a href="#dashboard" class="pill-link">Intelligence</a>
+      <a href="#psychology" class="pill-link">Philosophy</a>
+      <a href="#faq" class="pill-link">FAQ</a>
+    </nav>
+    
+    <div class="nav-actions" style="display: flex; align-items: center;">
+      <button id="nav-action-btn" class="btn btn-chrome" style="background: #4a5af0; color: white; border-radius: 20px; box-shadow: none; border: none; padding: 10px 20px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+        </svg>
+        Add to Chrome
+      </button>
+    </div>
+  </header>
+
+  <!-- --- VIDEO HERO SECTION --- -->
+  <section id="hero-3d-section">
+    <!-- Video Background (Scaled to hide watermark) -->
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; display: flex; justify-content: center; align-items: flex-start; overflow: hidden;">
+      <video src="d_c_e_b_f_d_a_b_dfmp_.mp4" autoplay loop muted playsinline style="width: 100%; height: 110%; object-fit: cover; transform: scale(1.25) translateX(15%); transform-origin: center right;"></video>
+    </div>
+    
+    <!-- Re-added Voydr Intro Content -->
+    <div id="hero-classic-content" style="position: absolute; top: 50%; left: 8%; right: auto; transform: translateY(-50%); text-align: left; z-index: 2; width: 100%; max-width: 450px; pointer-events: none; opacity: 0; animation: fadeInContent 2s ease forwards 1s;">
+      <h1 class="hero-title" style="color: #ffffff; font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 16px; letter-spacing: -0.02em;">
+        <span style="background: linear-gradient(90deg, #ffffff, #c2caff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block;">Be Intentional</span> <span style="background: linear-gradient(135deg, #ffffff 0%, #a1a1a6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block;">with Your</span> <span style="background: linear-gradient(90deg, #4a5af0, #00d2ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block;">Attention.</span>
+      </h1>
+      <p class="hero-subtitle" style="background: linear-gradient(135deg, #ffffff 0%, #a0a5b5 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 1.15rem; font-weight: 400; line-height: 1.5;">
+        Voydr is an Apple-inspired, psychology-backed screen intelligence coach that trains you to build healthier digital habits.
+      </p>
+    </div>
+    
+    <style>
+      @keyframes fadeInContent {
+        from { opacity: 0; margin-top: 20px; }
+        to { opacity: 1; margin-top: 0; }
+      }
+    </style>
+
+  </section>
+
+  <!-- --- THE INVISIBLE TAX SECTION --- -->
+  <section id="invisible-tax-section" style="background-color: #fafafa; padding: 140px 20px; text-align: center; display: flex; flex-direction: column; align-items: center; overflow: hidden;">
+    <div style="max-width: 900px; width: 100%;">
+      <p class="tax-anim-item" style="color: #4a5af0; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 24px; opacity: 0;">The Invisible Tax</p>
+      
+      <h2 style="line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 48px; margin-top: 0;">
+        <div class="tax-anim-item" style="font-size: clamp(2.5rem, 5vw, 4.2rem); font-weight: 700; color: #1d1d1f; margin-bottom: 4px; opacity: 0;">Your attention is fragmenting.</div>
+        <div class="tax-anim-item" style="font-size: clamp(2.2rem, 4.5vw, 4rem); font-weight: 600; color: #86868b; opacity: 0;">We scroll unconsciously,<br>losing hours to digital noise.</div>
+      </h2>
+      
+      <p class="tax-anim-item" style="font-size: 1.25rem; line-height: 1.6; color: #86868b; max-width: 650px; margin: 0 auto; font-weight: 400; opacity: 0;">
+        Technology was built to serve us, but invisible digital habits have turned us into the product. Voydr illuminates these patterns, helping you reclaim the space between intention and action.
+      </p>
+    </div>
+    
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Text animation
+        gsap.to(".tax-anim-item", {
+          scrollTrigger: {
+            trigger: "#invisible-tax-section",
+            start: "top 75%",
+          },
+          y: 0,
+          opacity: 1,
+          duration: 1.2,
+          stagger: 0.2,
+          ease: "power3.out",
+          startAt: { y: 40, opacity: 0 }
+        });
+        
+        // Bar chart animation
+        gsap.from(".light-bar", {
+          scrollTrigger: {
+            trigger: "#card-focus-score-new",
+            start: "top 85%",
+          },
+          height: "0%",
+          duration: 1.2,
+          stagger: 0.05,
+          ease: "power3.out"
+        });
+      });
+    </script>
+  </section>
+
+
+  <!-- --- THE LIVING PREMIUM DASHBOARD --- -->
+  <section class="dashboard-section section-dark" id="dashboard">
+    <div class="section-header">
+      <h2>The Digital Mirror</h2>
+      <p>A beautiful dashboard designed to expand digital awareness, reduce anxiety, and inspire focus.</p>
+    </div>
+
+    <div class="mac-window">
+      <div class="mac-window-header">
+        <div class="mac-dot" style="background: #ff5f56;"></div>
+        <div class="mac-dot" style="background: #ffbd2e;"></div>
+        <div class="mac-dot" style="background: #27c93f;"></div>
+      </div>
+      <div class="mac-window-body">
+        <div class="dashboard-grid">
+          
+          <!-- NEW CARD 1: FOCUS SCORE BAR CHART (col-8) -->
+          <div class="glass-card col-8" id="card-focus-score-new">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px;">
+              <div>
+                <h3 class="card-title" style="color: #8e8e93; font-weight: 700;">Focus Score</h3>
+                <div style="font-size: 3.5rem; font-weight: 800; color: #ffffff; letter-spacing: -0.04em; line-height: 1.1; margin-top: 12px;">84.2</div>
+                <div style="color: #0a84ff; font-weight: 600; font-size: 0.9rem; margin-top: 4px;">↑ +12% this week</div>
+              </div>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8e8e93" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+            </div>
+            
+            <div class="light-bar-chart">
+              <!-- Bars generated by JS or CSS -->
+              <div class="light-bar" style="height: 15%;"></div>
+              <div class="light-bar" style="height: 25%;"></div>
+              <div class="light-bar" style="height: 35%;"></div>
+              <div class="light-bar" style="height: 25%;"></div>
+              <div class="light-bar" style="height: 45%;"></div>
+              <div class="light-bar" style="height: 60%;"></div>
+              <div class="light-bar" style="height: 45%;"></div>
+              <div class="light-bar" style="height: 30%;"></div>
+              <div class="light-bar" style="height: 65%;"></div>
+              <div class="light-bar" style="height: 50%;"></div>
+              <div class="light-bar" style="height: 40%;"></div>
+              <div class="light-bar" style="height: 55%;"></div>
+              <div class="light-bar" style="height: 35%;"></div>
+              <div class="light-bar" style="height: 25%;"></div>
+            </div>
+          </div>
+
+          <!-- NEW CARD 2: RECENT INSIGHTS (col-4) -->
+          <div class="glass-card col-4" id="card-recent-insights">
+            <h3 class="card-title" style="color: #8e8e93; font-weight: 700; margin-bottom: 30px;">Recent Insights</h3>
+            
+            <div class="insight-list">
+              <!-- Insight 1 -->
+              <div class="insight-item">
+                <div class="insight-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8e8e93" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  </svg>
+                </div>
+                <div class="insight-text">
+                  <h4>Flow state achieved</h4>
+                  <p>Morning session • 2h uninterrupted</p>
+                </div>
+              </div>
+              
+              <!-- Insight 2 -->
+              <div class="insight-item">
+                <div class="insight-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8e8e93" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                  </svg>
+                </div>
+                <div class="insight-text">
+                  <h4>Context switch warning</h4>
+                  <p>High frequency switching detected</p>
+                </div>
+              </div>
+              
+              <!-- Insight 3 -->
+              <div class="insight-item">
+                <div class="insight-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8e8e93" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                </div>
+                <div class="insight-text">
+                  <h4>Weekly summary ready</h4>
+                  <p>Your attention trend is positive</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+      <!-- CARD 4: SCREEN TIME INTELLIGENCE - TOP SITES (col-7) -->
+      <div class="glass-card col-7" id="card-top-sites">
+        <h3 class="card-title">Intelligence Feed <span class="badge" style="background: rgba(255,255,255,0.05); color: var(--text-secondary);">Today</span></h3>
+        <div class="site-rows" id="top-sites-feed">
+          <div style="text-align: center; padding: 40px; color: var(--text-secondary);">Loading intelligence feed...</div>
+        </div>
+      </div>
+
+      <!-- CARD 5: HARD BLOCKING CONTROL PANEL (col-5) -->
+      <div class="glass-card col-5" id="card-blocking">
+        <h3 class="card-title" style="color: var(--burnt-coral);">Calm Blocker <span class="badge" style="background: var(--burnt-coral-glow); color: var(--burnt-coral);">Midnight Block</span></h3>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.4; margin-bottom: 20px;">
+          Set calm barriers to protect your mind. Blocked sites redirect to a therapeutic breathing page until midnight.
+        </p>
+
+        <div class="block-form">
+          <input type="text" id="block-domain-input" class="input-field" placeholder="e.g. twitter.com" />
+          <button id="block-submit-btn" class="btn btn-block-action">Block</button>
+        </div>
+
+        <h4 style="font-size: 0.82rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px;">
+          Currently Shielded
+        </h4>
+        <div class="blocked-badge-list" id="blocked-badges-container">
+          <span style="font-size: 0.85rem; color: var(--text-tertiary);">No sites shielded yet.</span>
+        </div>
+      </div>
+
+      <!-- CARD 6: WEEKLY REPORT GRAPHICS (col-12) -->
+      <div class="glass-card col-12" id="card-weekly-trends">
+        <h3 class="card-title">Weekly Habit Index <span class="badge" style="background: rgba(127, 200, 169, 0.1); color: var(--mint-green);">7-Day History</span></h3>
+        
+        <div class="chart-container" id="weekly-bars-container">
+          <div class="chart-bar-group">
+            <div class="chart-bar bar-high" style="height: 75%;" data-tooltip="Mon: 75% Focus score"></div>
+            <span class="chart-label">Mon</span>
+          </div>
+          <div class="chart-bar-group">
+            <div class="chart-bar" style="height: 48%;" data-tooltip="Tue: 48% Focus score"></div>
+            <span class="chart-label">Tue</span>
+          </div>
+          <div class="chart-bar-group">
+            <div class="chart-bar bar-high" style="height: 82%;" data-tooltip="Wed: 82% Focus score"></div>
+            <span class="chart-label">Wed</span>
+          </div>
+          <div class="chart-bar-group">
+            <div class="chart-bar" style="height: 35%;" data-tooltip="Thu: 35% Focus score"></div>
+            <span class="chart-label">Thu</span>
+          </div>
+          <div class="chart-bar-group">
+            <div class="chart-bar bar-high" style="height: 90%;" data-tooltip="Fri: 90% Focus score (Deep work peak!)"></div>
+            <span class="chart-label">Fri</span>
+          </div>
+          <div class="chart-bar-group">
+            <div class="chart-bar bar-high" style="height: 70%;" data-tooltip="Sat: 70% Focus score"></div>
+            <span class="chart-label">Sat</span>
+          </div>
+          <div class="chart-bar-group">
+            <div class="chart-bar" id="weekly-today-bar" style="height: 0%;" data-tooltip="Today: Calculating..."></div>
+            <span class="chart-label" style="color: var(--slate-blue); font-weight: 700;">Today</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- --- PSYCHOLOGY-BASED DESIGN PHILOSOPHY --- -->
+  <section class="psycho-section section-light" id="psychology">
+    <div class="section-header">
+      <h2>Psychological Ergonomics</h2>
+      <p>Why Voydr feels calming, therapeutic, and premium instead of aggressive or stressful.</p>
+    </div>
+
+    <div class="psycho-grid">
+      <div class="psycho-card">
+        <div class="psycho-icon slate">🧠</div>
+        <h3>Slate Blue Intentionality</h3>
+        <p>
+          We avoid aggressive notifications. Slate Blue (#5B6CFF) acts as a calming anchor for productivity metrics. It stimulates deliberate task engagement without raising your neurological alarm levels.
+        </p>
+      </div>
+
+      <div class="psycho-card">
+        <div class="psycho-icon mint">🌱</div>
+        <h3>Mint Green Reinforcement</h3>
+        <p>
+          Instead of highlighting only failures, Voydr rewards positive alignment. Mint Green (#7FC8A9) celebrates streaks, deep work achievements, and intentional usage to cultivate dopamine responses from constructive focus habits.
+        </p>
+      </div>
+
+      <div class="psycho-card">
+        <div class="psycho-icon coral">🛡️</div>
+        <h3>Muted Coral Barrier</h3>
+        <p>
+          Traditional blockers trigger active resistance with loud, frustrating alerts. Voydr uses a muted Burnt Coral (#D97B66) for shielded sites, introducing therapeutic pauses and deep breathing prompts to quiet impulsive browsing.
+        </p>
+      </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- HOW IT WORKS SECTION --- -->
+  <section class="how-it-works-section section-light" style="background: radial-gradient(circle at center top, #ffffff 0%, #f7f8fa 100%); position: relative; overflow: hidden;" id="how-it-works">
+    <style>
+      .timeline-wrapper {
+        max-width: 800px;
+        margin: 60px auto 0;
+        position: relative;
+        padding: 20px 0;
+      }
+      .timeline-track {
+        position: absolute;
+        left: 40px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: rgba(0,0,0,0.06);
+        z-index: 0;
+      }
+      .timeline-progress {
+        position: absolute;
+        left: 40px;
+        top: 0;
+        width: 2px;
+        height: 0%;
+        background: #5256ff;
+        z-index: 1;
+      }
+      .timeline-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 60px;
+        position: relative;
+        z-index: 2;
+      }
+      .timeline-node {
+        width: 60px;
+        height: 60px;
+        background: #5256ff;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 800;
+        box-shadow: 0 8px 24px rgba(82, 86, 255, 0.4);
+        margin-left: 11px; /* Align perfectly over the line */
+        flex-shrink: 0;
+        opacity: 0; /* For GSAP */
+        transform: scale(0.5); /* For GSAP */
+      }
+      .timeline-content {
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 32px;
+        margin-left: 40px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        flex-grow: 1;
+        opacity: 0; /* For GSAP */
+        transform: translateX(50px); /* For GSAP */
+      }
+      .timeline-content h3 {
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: #1d1d1f;
+        margin-bottom: 12px;
+      }
+      .timeline-content p {
+        font-size: 1rem;
+        color: #6e6e73;
+        line-height: 1.6;
+      }
+    </style>
+    <div class="section-header">
+      <h2>The Voydr Protocol</h2>
+      <p>Three simple steps to reclaim your digital autonomy.</p>
+    </div>
+    <div class="timeline-wrapper">
+      <div class="timeline-track"></div>
+      <div class="timeline-progress" id="tl-progress"></div>
+      
+      <div class="timeline-item">
+        <div class="timeline-node">01</div>
+        <div class="timeline-content">
+          <h3>Install & Initialize</h3>
+          <p>Add the lightweight extension to Chrome. No account creation, no cloud syncing. Your data stays entirely local on your machine.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-node">02</div>
+        <div class="timeline-content">
+          <h3>Calibrate Your Mind</h3>
+          <p>Open the Digital Mirror dashboard. Tag the sites that help you build, and hard-block the sites that steal your focus.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-node">03</div>
+        <div class="timeline-content">
+          <h3>Enter Flow State</h3>
+          <p>Browse normally. If you hit a distraction, Voydr’s calm blocker will prompt you to take a breath and refocus your intention.</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const timelineSection = document.getElementById("how-it-works");
+        const nodes = gsap.utils.toArray(".timeline-node");
+        const cards = gsap.utils.toArray(".timeline-content");
+
+        // Animate the line drawing down
+        gsap.to("#tl-progress", {
+          scrollTrigger: {
+            trigger: ".timeline-wrapper",
+            start: "top 60%",
+            end: "bottom 60%",
+            scrub: 1, // Smooth scrubbing
+          },
+          height: "100%",
+          ease: "none"
+        });
+
+        // Animate the nodes and cards as you scroll down
+        nodes.forEach((node, i) => {
+          gsap.to(node, {
+            scrollTrigger: {
+              trigger: node,
+              start: "top 70%",
+            },
+            scale: 1,
+            opacity: 1,
+            duration: 0.6,
+            ease: "back.out(1.7)"
+          });
+
+          gsap.to(cards[i], {
+            scrollTrigger: {
+              trigger: node,
+              start: "top 70%",
+            },
+            x: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power3.out",
+            delay: 0.2 // Wait for node to pop slightly
+          });
+        });
+      });
+    </script>
+  </section>
+
+  <!-- --- FEATURES SECTION --- -->
+  <section class="features-section section-dark" id="features">
+    <div class="section-header">
+      <h2>Designed for Deep Work</h2>
+      <p>Powerful tools to protect your attention, packaged in a beautiful interface.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-image-box">
+          <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 15L20 28V50C20 70 35 85 50 95C65 85 80 70 80 50V28L50 15Z" fill="rgba(127, 200, 169, 0.15)" stroke="#7FC8A9" stroke-width="4" stroke-linejoin="round"/>
+            <rect x="38" y="45" width="24" height="20" rx="4" fill="#7FC8A9"/>
+            <path d="M42 45V36C42 31.5 45.5 28 50 28C54.5 28 58 31.5 58 36V45" stroke="#7FC8A9" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>100% Offline & Private</h3>
+        <p>Your browsing data never leaves your device. No cloud syncing, no data mining, no tracking scripts.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-image-box">
+          <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="35" fill="rgba(91, 108, 255, 0.15)" stroke="#5B6CFF" stroke-width="4"/>
+            <path d="M55 25L35 55H50L45 75L65 45H50L55 25Z" fill="#5B6CFF" stroke="#5B6CFF" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Ultra Lightweight</h3>
+        <p>Built with vanilla Javascript and CSS to ensure zero impact on your browser's performance or battery life.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-image-box">
+          <svg width="120" height="100" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="25" y="30" width="40" height="40" rx="8" fill="#7FC8A9" transform="rotate(-15 25 30)"/>
+            <rect x="55" y="25" width="40" height="40" rx="8" fill="#5B6CFF" transform="rotate(10 55 25)"/>
+            <rect x="40" y="45" width="40" height="40" rx="8" fill="#D97B66"/>
+            <circle cx="45" cy="50" r="3" fill="#fff" opacity="0.8"/>
+            <circle cx="75" cy="30" r="3" fill="#fff" opacity="0.8"/>
+            <circle cx="60" cy="50" r="3" fill="#fff" opacity="0.8"/>
+          </svg>
+        </div>
+        <h3>Smart Categorization</h3>
+        <p>Easily tag websites as productive or distracting. Your intention index updates in real-time as you browse.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- FAQ SECTION --- -->
+  <section class="faq-section section-light" id="faq" style="background: #fafafa; padding-top: 80px; padding-bottom: 80px;">
+    <div class="section-header" style="margin-bottom: 60px;">
+      <h2 style="font-size: 3rem; font-weight: 700; color: #111;">Frequently Asked Questions</h2>
+    </div>
+    
+    <div class="accordion-container" style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px;">
+      
+      <!-- FAQ Item 1 -->
+      <div class="accordion-item" style="background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); overflow: hidden;">
+        <button class="accordion-header" style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 24px 32px; background: none; border: none; cursor: pointer; text-align: left; font-size: 1.25rem; font-weight: 500; color: #111; font-family: inherit;">
+          Is Voydr completely free?
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s ease;">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="accordion-content" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+          <div style="padding: 0 32px 32px 32px; font-size: 1.05rem; color: #666; line-height: 1.6;">
+            Yes. Voydr is built to help you, not to monetize your attention. There are no premium tiers or hidden fees.
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 2 -->
+      <div class="accordion-item" style="background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); overflow: hidden;">
+        <button class="accordion-header" style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 24px 32px; background: none; border: none; cursor: pointer; text-align: left; font-size: 1.25rem; font-weight: 500; color: #111; font-family: inherit;">
+          Can I bypass the blocked sites?
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s ease;">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="accordion-content" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+          <div style="padding: 0 32px 32px 32px; font-size: 1.05rem; color: #666; line-height: 1.6;">
+            The goal is friction, not a prison. Blocks last until midnight, but if you absolutely must access a site, you can remove it from the dashboard.
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 3 -->
+      <div class="accordion-item" style="background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); overflow: hidden;">
+        <button class="accordion-header active" style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 24px 32px; background: none; border: none; cursor: pointer; text-align: left; font-size: 1.25rem; font-weight: 500; color: #111; font-family: inherit;">
+          Does it work on Safari or Edge?
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s ease; transform: rotate(180deg);">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="accordion-content" style="max-height: 500px; overflow: hidden; transition: max-height 0.3s ease;">
+          <div style="padding: 0 32px 32px 32px; font-size: 1.05rem; color: #666; line-height: 1.6;">
+            Currently, Voydr is optimized as a Chrome Extension, which also works seamlessly on Brave, Arc, and Edge browsers.
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 4 -->
+      <div class="accordion-item" style="background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); overflow: hidden;">
+        <button class="accordion-header" style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 24px 32px; background: none; border: none; cursor: pointer; text-align: left; font-size: 1.25rem; font-weight: 500; color: #111; font-family: inherit;">
+          How does it calculate the Focus Score?
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s ease;">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="accordion-content" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;">
+          <div style="padding: 0 32px 32px 32px; font-size: 1.05rem; color: #666; line-height: 1.6;">
+            Your score is the ratio of time spent on "Productive" sites versus "Distracting" sites, completely customized by you.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- --- TESTIMONIALS SECTION --- -->
+  <section class="testimonials-section section-dark" id="testimonials">
+    <div class="section-header">
+      <h2>Proof of Focus</h2>
+      <p>Join thousands of intentional users.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <p class="testimonial-quote">"Voydr completely changed how I work. Instead of guilt-tripping me for taking a break, it encourages me to be intentional. I've doubled my deep work hours."</p>
+        <div class="testimonial-author">
+          <img class="author-avatar" src="assets/sparsh.png" alt="Sparsh Yadav" style="object-fit: cover;">
+          <div class="author-info">
+            <h4>Sparsh Yadav</h4>
+            <p>Computer Science Student</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-quote">"The Apple-like aesthetic makes me actually want to use the dashboard. It feels like a premium productivity tool, not a restrictive parent app."</p>
+        <div class="testimonial-author">
+          <img class="author-avatar" src="assets/nageshwar.jpg" alt="Nageshwar Gupta" style="object-fit: cover;">
+          <div class="author-info">
+            <h4>Nageshwar Gupta</h4>
+            <p>Frontend Developer</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-quote">"I used to spend 3 hours a day mindlessly scrolling. Voydr's 'calm blocker' doesn't annoy me—it actually helps me pause and get back on track."</p>
+        <div class="testimonial-author">
+          <img class="author-avatar" src="assets/ayush.jpg" alt="Ayush Kumar" style="object-fit: cover;">
+          <div class="author-info">
+            <h4>Ayush Kumar</h4>
+            <p>Startup Founder</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- MANIFESTO SECTION --- -->
+  <section class="manifesto-section section-light" id="manifesto">
+    <div class="manifesto-container">
+      <h2>The Attention Economy is Broken.</h2>
+      <p>Tech companies spend billions engineering algorithms designed to hijack your dopamine and keep you scrolling. Traditional site blockers fight back with stress, guilt, and loud alarms.</p>
+      <p>We built Voydr because we believe in a better way. We believe in <span class="manifesto-highlight">psychological ergonomics</span>. By using calming colors, positive reinforcement, and intentional friction, Voydr trains your brain to break the cycle of impulsive browsing.</p>
+      <p>Your attention is your most valuable asset. It's time to take it back.</p>
+    </div>
+  </section>
+
+  <!-- --- FINAL CTA --- -->
+  <section class="cta-section section-dark">
+    <div class="cta-container">
+      <h2 class="cta-title">Take control of your attention.</h2>
+      <p class="cta-subtitle">Install Voydr today and experience an intentional digital habit system.</p>
+      <button id="footer-add-chrome-btn" class="btn btn-chrome btn-large" style="padding: 16px 36px; font-size: 1.1rem; border-radius: 50px;">
+        Add to Chrome — It's free
+      </button>
+    </div>
+  </section>
+
+  <!-- --- FOOTER --- -->
+  <footer class="section-dark">
+    <div class="footer-content">
+      <div class="brand-container">
+        <span class="brand-logo-text" style="font-size: 1.1rem;">Voydr</span>
+      </div>
+      <p class="footer-text">
+        © 2026 Voydr Performance Coach. Built for CS Students, Developers, and Startup Creators. No ads. No data collection. 100% Offline.
+      </p>
+    </div>
+  </footer>
+
+  <!-- --- STANDALONE SHOWCASE: SIMULATED BLOCK PAGE MODAL --- -->
+  <div class="simulated-block-modal" id="simulated-block-modal-screen">
+    <div class="simulated-card">
+      <div class="breathing-circle-sim">🧘</div>
+      <h2>Focus Mode Shield</h2>
+      <p>You have hard-blocked access to:</p>
+      <div class="domain-placeholder" id="simulated-block-domain-name">instagram.com</div>
+      <p>
+        Take a slow breath in... and let it out. This barrier is active until midnight to protect your attention and your goals. Stay intentional.
+      </p>
+      <button id="simulated-block-close-btn" class="btn btn-secondary" style="width: 100%; padding: 12px; border-radius: 14px; justify-content: center; font-weight: 600;">
+        Acknowledge and Refocus
+      </button>
+    </div>
+  </div>
+
+  <script src="Voydr-V1-main/dashboard.js"></script>
+  <script src="Voydr-V1-main/hero-3d.js"></script>
+</body>
+</html>
